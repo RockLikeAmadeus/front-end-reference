@@ -43,6 +43,18 @@ We need Babel for a few things. It gets installed with Jest, so we really just n
 }
 ```
 
+9. `$ npm install --save-dev jest-environment-jsdom`
+10. Add the test environment we just installed to the project by opening `package.json` and adding the following section at the bottom:
+
+```json
+{
+    ...,
+    "jest": {
+        "testEnvironment": "jsdom"
+    }
+}
+```
+
 # Test Basics
 
 Test-driven react development using Jest looks something like this:
