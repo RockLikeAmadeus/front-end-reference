@@ -42,3 +42,21 @@ We need Babel for a few things. It gets installed with Jest, so we really just n
     "plugins": ["@babel/transform-runtime"]
 }
 ```
+
+# Test Basics
+
+Test-driven react development using Jest looks something like this:
+
+```js
+describe("Appointment", () => {
+  it("renders the customer first name", () => {
+    expect(document.body.textContent).toContain("Ashley");
+  });
+});
+```
+
+- The test files go in a directory which is separate from the `src` directory, since our tests should not have a one-to-one relationship with our application structure (as that would tightly-couple the two).
+- The `describe()` function defines a _test suite_, and the first argument is the name of the **unit** you are testing.
+- The `it()` function is the preferred test method; there are equivalents with different names, but `it` reads best.
+  - The first argument to `it()` should be a string which is a present-tense phrase that describes the behavior we expect, as this reads very nicely in the Jest test results (assuming the name of the suit is the name of the unit, as in the above example).
+- The `toContain()` function is an example of a _matcher_, and you can and should write your own matchers that are specific to your project.
