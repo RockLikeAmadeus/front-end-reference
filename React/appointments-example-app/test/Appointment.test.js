@@ -1,5 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { act } from "react-dom/test-utils";
+// `Appointment` is not the default export, which is intentional
+import { Appointment } from "../src/Appointment";
 
 describe("Appointment", () => {
   it("renders the customer first name", () => {
@@ -9,7 +12,7 @@ describe("Appointment", () => {
     const component = <Appointment customer={customer} />;
     const container = document.createElement("div");
     document.body.appendChild(container);
-    ReactDOM.createRoot(container).render(component);
+    act(() => ReactDOM.createRoot(container).render(component));
     expect(document.body.textContent).toContain("Ashley");
   });
 });

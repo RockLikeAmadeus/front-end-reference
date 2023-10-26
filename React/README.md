@@ -50,7 +50,10 @@ We need Babel for a few things. It gets installed with Jest, so we really just n
 {
     ...,
     "jest": {
-        "testEnvironment": "jsdom"
+        "testEnvironment": "jsdom",
+        "globals": {
+          "IS_REACT_ACT_ENVIRONMENT": true
+        }
     }
 }
 ```
@@ -67,9 +70,59 @@ describe("Appointment", () => {
 });
 ```
 
+Run your tests with `$ npm test`
+
 - The test files go in a directory which is separate from the `src` directory, since our tests should not have a one-to-one relationship with our application structure (as that would tightly-couple the two).
 - The `describe()` function defines a _test suite_, and the first argument is the name of the **unit** you are testing.
 - The `it()` function is the preferred test method; there are equivalents with different names, but `it` reads best.
-  - The first argument to `it()` should be a string which is a present-tense phrase that describes the behavior we expect, as this reads very nicely in the Jest test results (assuming the name of the suit is the name of the unit, as in the above example).
+  - The first argument to `it()` should be a string which is a present-tense phrase that describes the behavior we expect, as this reads very nicely in the Jest test results (assuming the name of the suite is the name of the unit, as in the above example).
 - The `toContain()` function is an example of a _matcher_, and you can and should write your own matchers that are specific to your project.
 - In order for `document` to be defined as we expect, we need to use the `jsdom` **test environment** (a piece of code that performs setup and teardown before and after your test runs, respectively), which gives us a headless DOM we can access in the Node runtime for stuff like this. We install and setup `jsdom` in the project setup steps (9 and 10, to be exact).
+
+# Defining what usage of your component will look like (get to red)
+
+Since this is TDD, you write something like the following _before creating your component_.
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { act } from "react-dom/test-utils";
+// `Appointment` is not the default export, which is intentional
+import { Appointment } from "../src/Appointment";
+
+describe("Appointment", () => {
+  it("renders the customer first name", () => {
+    const customer = {
+      firstName: "Ashley",
+    };
+    const component = <Appointment customer={customer} />;
+    const container = document.createElement("div");
+    document.body.appendChild(container); // appendChild isn't actually recommended
+    act(() => ReactDOM.createRoot(container).render(component));
+    expect(document.body.textContent).toContain("Ashley");
+  });
+});
+```
+
+# Creating the component (get to green)
+
+Create an empty file
+
+```
+$ mkdir src
+$ touch src/Appointment.js
+```
+
+And then define an empty component in the new file to _do the smallest thing to fix the reported failure (in this case, the component being undefined)_:
+
+```js
+export const Appointment = () => {};
+```
+
+Then run your test to find the next thing to do:
+
+```js
+export const Appointment = () => "Ashley";
+```
+
+# Triangulate to remove hard coding
