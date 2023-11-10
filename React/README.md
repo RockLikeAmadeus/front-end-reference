@@ -60,6 +60,16 @@ We need Babel for a few things. It gets installed with Jest, so we really just n
 
 Note: this enables the React `act()` function, which pauses until asynchronous rendering has completed. It's useful, but not requierd for React testing. See https://reacttdd.com/understanding-act.
 
+11. If you'd like, add the `watchAll` flag to the `test` command to automatically re-run tests when changes are detected:
+
+```json
+  ...
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  ...
+```
+
 # Test Basics
 
 Test-driven react development using Jest looks something like this:
@@ -146,3 +156,37 @@ export const Appointment = ({ customer }) => <div>{customer.firstName}</div>;
 ```
 
 # Refactor
+
+Refactoring applies to tests just as much as production code. Remember to DRY up your test code often. One way to do this is with the `beforeEach` block:
+
+```js
+describe("Appointment", () => {
+  let container;
+  beforeEach(() => {
+    container = container = document.createElement("div");
+  });
+
+  const render = (component) => {
+    document.body.replaceChildren(container);
+    act(() => ReactDOM.createRoot(container).render(component));
+  };
+
+  it("renders the customer first name", () => {
+    const customer = {
+      firstName: "Ashley",
+    };
+    render(<Appointment customer={customer} />);
+    expect(document.body.textContent).toContain("Ashley");
+  });
+
+  it("renders another customer first name", () => {
+    const customer = {
+      firstName: "Jordan",
+    };
+    render(<Appointment customer={customer} />);
+    expect(document.body.textContent).toContain("Jordan");
+  });
+});
+```
+
+Be careful with using `let` in the `describe` scope--use the following rule: any variable declared in the `describe` scope should be assigned a new value in the `beforeEach` block (or in the first part of each test). See https://reacttdd.com/use-of-let.
