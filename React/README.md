@@ -58,6 +58,8 @@ We need Babel for a few things. It gets installed with Jest, so we really just n
 }
 ```
 
+Note: this enables the React `act()` function, which pauses until asynchronous rendering has completed. It's useful, but not requierd for React testing. See https://reacttdd.com/understanding-act.
+
 # Test Basics
 
 Test-driven react development using Jest looks something like this:
@@ -97,7 +99,7 @@ describe("Appointment", () => {
     };
     const component = <Appointment customer={customer} />;
     const container = document.createElement("div");
-    document.body.appendChild(container); // appendChild isn't actually recommended
+    document.body.replaceChildren(container); // appendChild isn't actually recommended
     act(() => ReactDOM.createRoot(container).render(component));
     expect(document.body.textContent).toContain("Ashley");
   });
@@ -126,3 +128,21 @@ export const Appointment = () => "Ashley";
 ```
 
 # Triangulate to remove hard coding
+
+Triangulation is adding more specific tests, which requires more general production code, in a cycle. In this case, the first cycle would involve duplicating our test, but passing in (and then verifying) a different customer name.
+
+Note (move this elsewhere): If you already have multiple tests and you want to work on one in isolation, we can skip a test by adding `.skip` like this:
+
+```js
+it.skip("renders another customer first name", () => {
+```
+
+To get both to pass, rewrite the component as:
+
+```js
+import React from "react";
+
+export const Appointment = ({ customer }) => <div>{customer.firstName}</div>;
+```
+
+# Refactor

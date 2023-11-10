@@ -11,8 +11,18 @@ describe("Appointment", () => {
     };
     const component = <Appointment customer={customer} />;
     const container = document.createElement("div");
-    document.body.appendChild(container);
+    document.body.replaceChildren(container);
     act(() => ReactDOM.createRoot(container).render(component));
     expect(document.body.textContent).toContain("Ashley");
+  });
+  it("renders another customer first name", () => {
+    const customer = {
+      firstName: "Jordan",
+    };
+    const component = <Appointment customer={customer} />;
+    const container = document.createElement("div");
+    document.body.replaceChildren(container);
+    act(() => ReactDOM.createRoot(container).render(component));
+    expect(document.body.textContent).toContain("Jordan");
   });
 });
