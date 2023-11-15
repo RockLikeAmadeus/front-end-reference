@@ -190,3 +190,7 @@ describe("Appointment", () => {
 ```
 
 Be careful with using `let` in the `describe` scope--use the following rule: any variable declared in the `describe` scope should be assigned a new value in the `beforeEach` block (or in the first part of each test). See https://reacttdd.com/use-of-let.
+
+# Things to keep in mind
+
+- You don't need a separate file for each component, particularly if the grouped components are small and closely-related, such as those that components that are composed of each other.
