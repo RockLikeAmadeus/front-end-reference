@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { act } from "react-dom/test-utils";
 // `Appointment` is not the default export, which is intentional
-import { Appointment } from "../src/Appointment";
+import { Appointment, AppointmentsDayView } from "../src/Appointment";
 
 describe("Appointment", () => {
   let container;
@@ -32,7 +32,7 @@ describe("Appointment", () => {
   });
 });
 
-describe("AppointmentDayView", () => {
+describe("AppointmentsDayView", () => {
   let container;
   beforeEach(() => {
     container = document.createElement("div");
@@ -43,7 +43,7 @@ describe("AppointmentDayView", () => {
       ReactDOM.createRoot(container).render(component);
     });
   it("renders a div with the right id", () => {
-    render(<AppointmentDayView appointments={[]} />);
-    expect(document.querySelector("div#appointmentDayView")).not.toBeNull();
+    render(<AppointmentsDayView appointments={[]} />);
+    expect(document.querySelector("div#appointmentsDayView")).not.toBeNull();
   });
 });
