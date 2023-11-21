@@ -1,5 +1,68 @@
 These notes and examples are compiled based on the following sources:
-Mastering React Test-Driven Development by Daniel Irvine
+- react.dev/learn
+- Mastering React Test-Driven Development by Daniel Irvine
+
+# Concept Overview
+
+React components are JavaScript functions that return markup.
+
+```js
+function MyButton() {
+  return (
+    <button>I'm a button</button>
+  );
+}
+
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Welcome to my app</h1>
+      <MyButton />
+    </div>
+  );
+}
+```
+
+You can always tell a React component apart from a regular HTML tag because components start with a capital letter.
+
+You can't return multiple JSX tags. If you need to do something like this, wrap them into a shared parent like a <div> or an empty <> wrapper, like this:
+
+```js
+function AboutPage() {
+  return (
+    <>
+      <h1>About</h1>
+      <p>Hello there.<br />How do you do?</p>
+    </>
+  );
+}
+```
+
+## Styling
+
+Classes are specified withe `className` (rather than just `class` as in HTML):
+
+```js
+<img className="avatar" />
+```
+
+## Displaying Data
+
+Curly braces (`{}`) let you "escape out of" markup and back into JavaScript:
+
+```jsreturn (
+  <img
+    className="avatar"
+    src={user.imageUrl}
+  />
+);
+```
+
+## Common Terms: JSX, Redux, Hooks, etc.
+
+JSX is React's markup syntax. It is _technically_ optional.
+
+# Move the below notes into a separate building-an-app file, as this note should be for concepts
 
 # Creating a new React application
 
