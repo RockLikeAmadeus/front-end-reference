@@ -58,6 +58,82 @@ Curly braces (`{}`) let you "escape out of" markup and back into JavaScript:
 );
 ```
 
+## Conditional Rendering
+
+React doesn't have special syntax for writing conditions; regular JavaScript works. See the below examples (these should do essentially the same thing):
+
+```js
+let content;
+if (isLoggedIn) {
+  content = <AdminPanel />;
+} else {
+  content = <LoginForm />;
+}
+return (
+  <div>
+    {content}
+  </div>
+);
+```
+
+```js
+<div>
+  {isLoggedIn ? (
+    <AdminPanel />
+  ) : (
+    <LoginForm />
+  )}
+</div>
+```
+
+```js
+<div>
+  {isLoggedIn && <AdminPanel />}
+</div>
+```
+
+## Rendering Lists
+
+React lists are rendered using standard JavaScript features like `for` loops and the array `map()` function, such as in:
+
+```js
+const products = [
+  { title: 'Cabbage', id: 1 },
+  { title: 'Garlic', id: 2 },
+  { title: 'Apple', id: 3 },
+];
+
+const listItems = products.map(product =>
+  <li key={product.id}>
+    {product.title}
+  </li>
+);
+
+return (
+  <ul>{listItems}</ul>
+);
+```
+
+Notice how <li> has a key attribute. For each item in a list, you should pass a string or a number that uniquely identifies that item among its siblings. Usually, a key should be coming from your data, such as a database ID. React uses your keys to know what happened if you later insert, delete, or reorder the items.
+
+## Event Handling
+
+```js
+function MyButton() {
+  function handleClick() {
+    alert('You clicked me!');
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Click me
+    </button>
+  );
+}
+```
+
+_Important: Do not call the event handler function: you only need to pass it down. Notice how `onClick={handleClick}` has no parentheses at the end._
+
 ## Common Terms: JSX, Redux, Hooks, etc.
 
 JSX is React's markup syntax. It is _technically_ optional.
