@@ -173,6 +173,8 @@ Hooks can only be called at the top level of components, or from other hooks (i.
 
 ### Props
 
+You can "lift the state up" to parent components.
+
 ```js
 function MyButton({ count, onClick }) {
   return (
