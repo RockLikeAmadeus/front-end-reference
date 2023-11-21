@@ -133,6 +133,36 @@ function MyButton() {
 
 _Important: Do not call the event handler function: you only need to pass it down. Notice how `onClick={handleClick}` has no parentheses at the end._
 
+## Managing Component State
+
+First:
+
+```js
+import { useState } from 'react';
+```
+
+Then call `useState() to initialize one or more _state variables_ in your component. The `useState()` function accepts the initial state as its argument, and returns the current state along with the function that you use to update the state.
+
+```js
+function MyButton() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Clicked {count} times
+    </button>
+  );
+}
+```
+
+Any names are valid, but the convention is `something` and `setSomething`.
+
+If a component is rendered multiple times, each instance gets its own state.
+
 ## Common Terms: JSX, Redux, Hooks, etc.
 
 JSX is React's markup syntax. It is _technically_ optional.
