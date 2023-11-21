@@ -4,7 +4,7 @@ These notes and examples are compiled based on the following sources:
 
 # Concept Overview
 
-React components are JavaScript functions that return markup.
+React components are JavaScript functions that return markup. Because components have this structure, try to apply Uncle Bob's clean code rules for functions (short, descriptive, single-purpose, etc.).
 
 ```js
 function MyButton() {
@@ -162,6 +162,16 @@ function MyButton() {
 Any names are valid, but the convention is `something` and `setSomething`.
 
 If a component is rendered multiple times, each instance gets its own state.
+
+## Hooks
+
+Hooks are functions that start with `use` like `useState()`. There are various built-in hooks and you can always write your own.
+
+Hooks can only be called at the top level of components, or from other hooks (i.e. not in conditions or loops).
+
+## Sharing Data Between Components
+
+
 
 ## Common Terms: JSX, Redux, Hooks, etc.
 
