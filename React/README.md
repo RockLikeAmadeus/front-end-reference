@@ -51,10 +51,12 @@ Classes are specified withe `className` (rather than just `class` as in HTML):
 Curly braces (`{}`) let you "escape out of" markup and back into JavaScript:
 
 ```jsreturn (
+return (
   <img
     className="avatar"
     src={user.imageUrl}
   />
+);
 ```
 
 ## Conditional Rendering
