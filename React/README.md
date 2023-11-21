@@ -55,7 +55,6 @@ Curly braces (`{}`) let you "escape out of" markup and back into JavaScript:
     className="avatar"
     src={user.imageUrl}
   />
-);
 ```
 
 ## Conditional Rendering
