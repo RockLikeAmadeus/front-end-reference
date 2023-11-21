@@ -171,7 +171,33 @@ Hooks can only be called at the top level of components, or from other hooks (i.
 
 ## Sharing Data Between Components
 
+### Props
 
+```js
+function MyButton({ count, onClick }) {
+  return (
+    <button onClick={onClick}>
+      Clicked {count} times
+    </button>
+  );
+}
+
+export default function MyApp() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <h1>Counters that update together</h1>
+      <MyButton count={count} onClick={handleClick} />
+      <MyButton count={count} onClick={handleClick} />
+    </div>
+  );
+}
+```
 
 ## Common Terms: JSX, Redux, Hooks, etc.
 
