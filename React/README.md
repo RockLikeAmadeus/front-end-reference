@@ -205,6 +205,30 @@ export default function MyApp() {
 
 JSX is React's markup syntax. It is _technically_ optional.
 
+# "Thinking in React"
+
+Finish taking notes based on https://react.dev/learn/thinking-in-react
+
+1. Mockup -> 2. Component Heirarchy -> 3. Static React version -> 4. Identify state -> 
+
+## 1. and 2.
+See top level README "The Process of Building User Interfaces" (add link here).
+
+## 3. Static React Version:
+The most straightforward way to start is to build an initial version that renders the UI from your data model without any interactivity (don't use state at all for this version). The root-level component will take the data model as a prop, and pass it down the heirarchy via props as needed.
+
+Implement components top down for simple interfaces, and bottom up for more complex ones. Remember, test-first.
+
+## 4. Identify state
+Identify the pieces of data in the static version that should be represented as state (that is, those data elements that change over time--data passed in from props or computed from other data are not state).
+
+## 5.
+
+## 6.
+
+
+---
+
 # Move the below notes into a separate building-an-app file, as this note should be for concepts
 
 # Creating a new React application
