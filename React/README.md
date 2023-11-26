@@ -213,4 +213,6 @@ Identify the pieces of data in the static version that should be represented as 
 
 ---
 
-# Move the below notes into a separate building-an-app file, as this note should be for concepts
+# Things to keep in mind
+
+- You don't need a separate file for each component, particularly if the grouped components are small and closely-related, such as those that are composed of each other. However, ensure that the file itself is named after the root component of the heirarchy it contains.
