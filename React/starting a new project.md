@@ -157,7 +157,7 @@ In `index.html`:
 $ npm run build
 ```
 
-and ignore main.js (since it's generated) with:
+Ignore main.js (since it's generated) with:
 
 ```
 $ echo "dist/main.js" >> .gitignore
