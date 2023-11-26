@@ -26,23 +26,30 @@ We need Babel for a few things. It gets installed with Jest, so we really just n
 
 ### 1. Create and navigate to a new directory for the project.
 
-2. `$ npm init` (the defaults are OK _except_ for the `test command` question: enter `jest`)
-3. `$ npm install --save-dev jest`
-4. `$ npm install --save react react-dom`
-5. `$ npm install --save-dev @babel/preset-env @babel/preset-react`
-6. `$ npm install --save-dev @babel/plugin-transform-runtime`
-7. `$ npm install --save @babel/runtime`
-8. Enable the packages we've just installed by creating a new file `.babelrc` with the contents
+### 2. Install dependencies
+
+`$ npm init` (the defaults are OK _except_ for the `test command` question: enter `jest`)
 
 ```
+$ npm install --save-dev jest
+$ npm install --save react react-dom
+$ npm install --save-dev @babel/preset-env @babel/preset-react
+$ npm install --save-dev @babel/plugin-transform-runtime
+$ npm install --save @babel/runtime
+$ npm install --save-dev jest-environment-jsdom
+$ npm install --save-dev webpack webpack-cli babel-loader
+```
+
+### 3. Enable the packages we've just installed by creating a new file `.babelrc` with the contents
+
+```json
 {
-    "presets": ["@babel/env", "@babel/react"],
-    "plugins": ["@babel/transform-runtime"]
+  "presets": ["@babel/env", "@babel/react"],
+  "plugins": ["@babel/transform-runtime"]
 }
 ```
 
-9. `$ npm install --save-dev jest-environment-jsdom`
-10. Add the test environment we just installed to the project by opening `package.json` and adding the following section at the bottom:
+### 4. Add the test environment we just installed to the project by opening `package.json` and adding the following section at the bottom:
 
 ```json
 {
@@ -58,7 +65,7 @@ We need Babel for a few things. It gets installed with Jest, so we really just n
 
 Note: this enables the React `act()` function, which pauses until asynchronous rendering has completed. It's useful, but not requierd for React testing. See https://reacttdd.com/understanding-act.
 
-11. Add a `build` script using webpack. Also, if you'd like, add the `watchAll` flag to the `test` command to automatically re-run tests when changes are detected:
+### 5. Add a `build` script using webpack. Also, if you'd like, add the `watchAll` flag to the `test` command to automatically re-run tests when changes are detected:
 
 ```json
   ...
@@ -69,7 +76,7 @@ Note: this enables the React `act()` function, which pauses until asynchronous r
   ...
 ```
 
-12. Create a place for initial sample data, for manual testing.
+### 6. Create a place for initial sample data, for manual testing.
 
 ```
 $ touch src/sampleData.js
@@ -79,7 +86,7 @@ It's probably easier to populate this file after you've created some initial com
 
 See the example [here](appointments-example-app/src/sampleData.js).
 
-13. Add an application entry point.
+### 7. Add an application entry point.
 
 ```
 $ touch src/index.js
@@ -97,10 +104,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
-14. Install webpack, and configure webpack in development mode (see webpack docs for setting up for production builds).
+### 8. Configure webpack in development mode (see webpack docs for setting up for production builds).
 
 ```
-$ npm install --save-dev webpack webpack-cli babel-loader
 $ touch webpack.config.js
 ```
 
@@ -123,7 +129,7 @@ module.exports = {
 };
 ```
 
-15. Add the `index.html` file
+### 9. Add the `index.html` file
 
 ```
 mkdir dist
@@ -145,7 +151,7 @@ In `index.html`:
 </html>
 ```
 
-16. Build the application
+### 10. Build the application
 
 ```
 npm run build
