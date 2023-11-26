@@ -5,6 +5,10 @@
 - [JavaScript](Frontend%20JavaScript)
 - [React](React)
 
+---
+
+<br>
+
 # The Process of Building User Interfaces
 
 ## 1. Map out requirements/stories
