@@ -156,3 +156,5 @@ In `index.html`:
 ```
 npm run build
 ```
+
+and view it at `dist/index.html` in your browser.
