@@ -154,7 +154,13 @@ In `index.html`:
 ### 10. Build the application
 
 ```
-npm run build
+$ npm run build
+```
+
+and ignore main.js (since it's generated) with:
+
+```
+$ echo "dist/main.js" >> .gitignore
 ```
 
 and view it at `dist/index.html` in your browser.
