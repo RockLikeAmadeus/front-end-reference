@@ -24,7 +24,8 @@ We need Babel for a few things. It gets installed with Jest, so we really just n
 
 ## Steps
 
-1. Create and navigate to a new directory for the project.
+### 1. Create and navigate to a new directory for the project.
+
 2. `$ npm init` (the defaults are OK _except_ for the `test command` question: enter `jest`)
 3. `$ npm install --save-dev jest`
 4. `$ npm install --save react react-dom`
@@ -142,4 +143,10 @@ In `index.html`:
     <script src="main.js"></script>
   </body>
 </html>
+```
+
+16. Build the application
+
+```
+npm run build
 ```
