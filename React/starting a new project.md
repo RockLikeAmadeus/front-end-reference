@@ -96,7 +96,7 @@ React apps are heirarchies of components, and the entry point should render the 
 
 ```js
 import React from "react";
-import ReactDOM from "react-dom/client/";
+import ReactDOM from "react-dom";
 import { MyRootComponent } from "./MyRootComponent";
 import { mySampleData } from "./sampleData";
 ReactDOM.createRoot(document.getElementById("root")).render(
