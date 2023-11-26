@@ -69,7 +69,7 @@ Note: this enables the React `act()` function, which pauses until asynchronous r
 
 12. Create a place for initial sample data, for manual testing.
 
-````
+```
 $ touch src/sampleData.js
 ```
 
@@ -78,4 +78,7 @@ It's probably easier to populate this file after you've created some initial com
 See the example [here](appointments-example-app/src/sampleData.js).
 
 13. Add an application entry point: react apps are heirarchies of components, and the entry point should render the root component (note, we typically don't want to test-drive root components). Keep the entry point brief, and only use it to instantiate dependencies and to call `render()`
-````
+
+```
+
+```
