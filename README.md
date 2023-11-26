@@ -1,4 +1,4 @@
-# Contents
+# Get Specific:
 
 - [HTML](HTML)
 - [CSS](CSS)
@@ -13,7 +13,7 @@ Think about what the system should do and how that would work. Think about what 
 
 ## 2. Use the requirements to break out the different views/tabs/windows that wil be necessary
 
-## 3. Use the results of 1. and 3. to mock up the UI
+## 3. Use the results of 1. and 2. to mock up the UI
 
 Use a (ideally low-fidelity) tool for this (try out Pencil Project, there might be multiple versions, but we want to try the open-source Electron-based one) (or, check out this link https://www.zenframe.com/post/top-open-source-wireframe-tools) (or just draw with a tablet)
 
