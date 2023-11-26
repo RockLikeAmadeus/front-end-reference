@@ -24,7 +24,7 @@ export default function MyApp() {
 
 You can always tell a React component apart from a regular HTML tag because components start with a capital letter.
 
-You can't return multiple JSX tags. If you need to do something like this, wrap them into a shared parent like a <div> or an empty <> wrapper, like this:
+You can't return multiple JSX tags. If you need to do something like this, wrap them into a shared parent like a `<div>` or an empty `<>` wrapper, like this:
 
 ```js
 function AboutPage() {
