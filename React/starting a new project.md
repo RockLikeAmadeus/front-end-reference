@@ -151,7 +151,7 @@ In `index.html`:
 </html>
 ```
 
-### 10. Build the application
+### 10. Build and run the application
 
 ```
 $ npm run build
@@ -163,4 +163,4 @@ and ignore main.js (since it's generated) with:
 $ echo "dist/main.js" >> .gitignore
 ```
 
-and view it at `dist/index.html` in your browser.
+Then view it at `dist/index.html` in your browser.
