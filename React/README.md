@@ -1,4 +1,5 @@
 These notes and examples are compiled based on the following sources:
+
 - react.dev/learn
 - Mastering React Test-Driven Development by Daniel Irvine
 
@@ -8,9 +9,7 @@ React components are JavaScript functions that return markup. Because components
 
 ```js
 function MyButton() {
-  return (
-    <button>I'm a button</button>
-  );
+  return <button>I'm a button</button>;
 }
 
 export default function MyApp() {
@@ -32,7 +31,11 @@ function AboutPage() {
   return (
     <>
       <h1>About</h1>
-      <p>Hello there.<br />How do you do?</p>
+      <p>
+        Hello there.
+        <br />
+        How do you do?
+      </p>
     </>
   );
 }
@@ -51,10 +54,7 @@ Classes are specified withe `className` (rather than just `class` as in HTML):
 Curly braces (`{}`) let you "escape out of" markup and back into JavaScript:
 
 ```js
-  <img
-    className="avatar"
-    src={user.imageUrl}
-  />
+<img className="avatar" src={user.imageUrl} />
 ```
 
 ## Conditional Rendering
@@ -68,27 +68,15 @@ if (isLoggedIn) {
 } else {
   content = <LoginForm />;
 }
-return (
-  <div>
-    {content}
-  </div>
-);
+return <div>{content}</div>;
 ```
 
 ```js
-<div>
-  {isLoggedIn ? (
-    <AdminPanel />
-  ) : (
-    <LoginForm />
-  )}
-</div>
+<div>{isLoggedIn ? <AdminPanel /> : <LoginForm />}</div>
 ```
 
 ```js
-<div>
-  {isLoggedIn && <AdminPanel />}
-</div>
+<div>{isLoggedIn && <AdminPanel />}</div>
 ```
 
 ## Rendering Lists
@@ -97,20 +85,16 @@ React lists are rendered using standard JavaScript features like `for` loops and
 
 ```js
 const products = [
-  { title: 'Cabbage', id: 1 },
-  { title: 'Garlic', id: 2 },
-  { title: 'Apple', id: 3 },
+  { title: "Cabbage", id: 1 },
+  { title: "Garlic", id: 2 },
+  { title: "Apple", id: 3 },
 ];
 
-const listItems = products.map(product =>
-  <li key={product.id}>
-    {product.title}
-  </li>
-);
+const listItems = products.map((product) => (
+  <li key={product.id}>{product.title}</li>
+));
 
-return (
-  <ul>{listItems}</ul>
-);
+return <ul>{listItems}</ul>;
 ```
 
 Notice how <li> has a key attribute. For each item in a list, you should pass a string or a number that uniquely identifies that item among its siblings. Usually, a key should be coming from your data, such as a database ID. React uses your keys to know what happened if you later insert, delete, or reorder the items.
@@ -120,14 +104,10 @@ Notice how <li> has a key attribute. For each item in a list, you should pass a 
 ```js
 function MyButton() {
   function handleClick() {
-    alert('You clicked me!');
+    alert("You clicked me!");
   }
 
-  return (
-    <button onClick={handleClick}>
-      Click me
-    </button>
-  );
+  return <button onClick={handleClick}>Click me</button>;
 }
 ```
 
@@ -138,7 +118,7 @@ _Important: Do not call the event handler function: you only need to pass it dow
 First:
 
 ```js
-import { useState } from 'react';
+import { useState } from "react";
 ```
 
 Then call `useState() to initialize one or more _state variables_ in your component. The `useState()` function accepts the initial state as its argument, and returns the current state along with the function that you use to update the state.
@@ -151,11 +131,7 @@ function MyButton() {
     setCount(count + 1);
   }
 
-  return (
-    <button onClick={handleClick}>
-      Clicked {count} times
-    </button>
-  );
+  return <button onClick={handleClick}>Clicked {count} times</button>;
 }
 ```
 
@@ -177,11 +153,7 @@ You can "lift the state up" to parent components.
 
 ```js
 function MyButton({ count, onClick }) {
-  return (
-    <button onClick={onClick}>
-      Clicked {count} times
-    </button>
-  );
+  return <button onClick={onClick}>Clicked {count} times</button>;
 }
 
 export default function MyApp() {
@@ -209,218 +181,26 @@ JSX is React's markup syntax. It is _technically_ optional.
 
 Finish taking notes based on https://react.dev/learn/thinking-in-react
 
-1. Mockup -> 2. Component Heirarchy -> 3. Static React version -> 4. Identify state -> 
+1. Mockup -> 2. Component Heirarchy -> 3. Static React version -> 4. Identify state ->
 
 ## 1. and 2.
+
 See top level README "The Process of Building User Interfaces" (add link here).
 
 ## 3. Static React Version:
+
 The most straightforward way to start is to build an initial version that renders the UI from your data model without any interactivity (don't use state at all for this version). The root-level component will take the data model as a prop, and pass it down the heirarchy via props as needed.
 
 Implement components top down for simple interfaces, and bottom up for more complex ones. Remember, test-first.
 
 ## 4. Identify state
+
 Identify the pieces of data in the static version that should be represented as state (that is, those data elements that change over time--data passed in from props or computed from other data are not state).
 
 ## 5.
 
 ## 6.
 
-
 ---
 
 # Move the below notes into a separate building-an-app file, as this note should be for concepts
-
-# Creating a new React application
-
-React applications should be built test-first, just like everything else. That means, according to YAGNI, we don't want anything in our applications that doesn't meet a needed specification, so we won't typically want to use `create-react-app` to avoid all of the extra stuff it includes.
-
-## Pre-requisites
-
-We need to have NPM, Jest, React, and Babel installed
-
-### NPM
-
-Make sure you have the latest NPM with
-
-```
-$ npm install npm@latest -g
-```
-
-### Jest
-
-Alternatives exist, but Jest is fine for now.
-
-### Babel
-
-We need Babel for a few things. It gets installed with Jest, so we really just need to add presets and plugins (a preset is a set of plugins). Each plugin enables a specific feature of the ECMAScript standards, or a preprocessor, such as JSX.
-
-## Steps
-
-1. Create and navigate to a new directory for the project.
-2. `$ npm init` (the defaults are OK _except_ for the `test command` question: enter `jest`)
-3. `$ npm install --save-dev jest`
-4. `$ npm install --save react react-dom`
-5. `$ npm install --save-dev @babel/preset-env @babel/preset-react`
-6. `$ npm install --save-dev @babel/plugin-transform-runtime`
-7. `$ npm install --save @babel/runtime`
-8. Enable the packages we've just installed by creating a new file `.babelrc` with the contents
-
-```
-{
-    "presets": ["@babel/env", "@babel/react"],
-    "plugins": ["@babel/transform-runtime"]
-}
-```
-
-9. `$ npm install --save-dev jest-environment-jsdom`
-10. Add the test environment we just installed to the project by opening `package.json` and adding the following section at the bottom:
-
-```json
-{
-    ...,
-    "jest": {
-        "testEnvironment": "jsdom",
-        "globals": {
-          "IS_REACT_ACT_ENVIRONMENT": true
-        }
-    }
-}
-```
-
-Note: this enables the React `act()` function, which pauses until asynchronous rendering has completed. It's useful, but not requierd for React testing. See https://reacttdd.com/understanding-act.
-
-11. If you'd like, add the `watchAll` flag to the `test` command to automatically re-run tests when changes are detected:
-
-```json
-  ...
-  "scripts": {
-    "test": "jest --watchAll"
-  },
-  ...
-```
-
-# Test Basics
-
-Test-driven react development using Jest looks something like this:
-
-```js
-describe("Appointment", () => {
-  it("renders the customer first name", () => {
-    expect(document.body.textContent).toContain("Ashley");
-  });
-});
-```
-
-Run your tests with `$ npm test`
-
-- The test files go in a directory which is separate from the `src` directory, since our tests should not have a one-to-one relationship with our application structure (as that would tightly-couple the two).
-- The `describe()` function defines a _test suite_, and the first argument is the name of the **unit** you are testing.
-- The `it()` function is the preferred test method; there are equivalents with different names, but `it` reads best.
-  - The first argument to `it()` should be a string which is a present-tense phrase that describes the behavior we expect, as this reads very nicely in the Jest test results (assuming the name of the suite is the name of the unit, as in the above example).
-- The `toContain()` function is an example of a _matcher_, and you can and should write your own matchers that are specific to your project.
-- In order for `document` to be defined as we expect, we need to use the `jsdom` **test environment** (a piece of code that performs setup and teardown before and after your test runs, respectively), which gives us a headless DOM we can access in the Node runtime for stuff like this. We install and setup `jsdom` in the project setup steps (9 and 10, to be exact).
-
-# Defining what usage of your component will look like (get to red)
-
-Since this is TDD, you write something like the following _before creating your component_.
-
-```js
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { act } from "react-dom/test-utils";
-// `Appointment` is not the default export, which is intentional
-import { Appointment } from "../src/Appointment";
-
-describe("Appointment", () => {
-  it("renders the customer first name", () => {
-    const customer = {
-      firstName: "Ashley",
-    };
-    const component = <Appointment customer={customer} />;
-    const container = document.createElement("div");
-    document.body.replaceChildren(container); // appendChild isn't actually recommended
-    act(() => ReactDOM.createRoot(container).render(component));
-    expect(document.body.textContent).toContain("Ashley");
-  });
-});
-```
-
-# Creating the component (get to green)
-
-Create an empty file
-
-```
-$ mkdir src
-$ touch src/Appointment.js
-```
-
-And then define an empty component in the new file to _do the smallest thing to fix the reported failure (in this case, the component being undefined)_:
-
-```js
-export const Appointment = () => {};
-```
-
-Then run your test to find the next thing to do:
-
-```js
-export const Appointment = () => "Ashley";
-```
-
-# Triangulate to remove hard coding
-
-Triangulation is adding more specific tests, which requires more general production code, in a cycle. In this case, the first cycle would involve duplicating our test, but passing in (and then verifying) a different customer name.
-
-Note (move this elsewhere): If you already have multiple tests and you want to work on one in isolation, we can skip a test by adding `.skip` like this:
-
-```js
-it.skip("renders another customer first name", () => {
-```
-
-To get both to pass, rewrite the component as:
-
-```js
-import React from "react";
-
-export const Appointment = ({ customer }) => <div>{customer.firstName}</div>;
-```
-
-# Refactor
-
-Refactoring applies to tests just as much as production code. Remember to DRY up your test code often. One way to do this is with the `beforeEach` block:
-
-```js
-describe("Appointment", () => {
-  let container;
-  beforeEach(() => {
-    container = container = document.createElement("div");
-  });
-
-  const render = (component) => {
-    document.body.replaceChildren(container);
-    act(() => ReactDOM.createRoot(container).render(component));
-  };
-
-  it("renders the customer first name", () => {
-    const customer = {
-      firstName: "Ashley",
-    };
-    render(<Appointment customer={customer} />);
-    expect(document.body.textContent).toContain("Ashley");
-  });
-
-  it("renders another customer first name", () => {
-    const customer = {
-      firstName: "Jordan",
-    };
-    render(<Appointment customer={customer} />);
-    expect(document.body.textContent).toContain("Jordan");
-  });
-});
-```
-
-Be careful with using `let` in the `describe` scope--use the following rule: any variable declared in the `describe` scope should be assigned a new value in the `beforeEach` block (or in the first part of each test). See https://reacttdd.com/use-of-let.
-
-# Things to keep in mind
-
-- You don't need a separate file for each component, particularly if the grouped components are small and closely-related, such as those that components that are composed of each other.
