@@ -1,10 +1,9 @@
 # Contents
 
-- [HTML](https://github.com/RockLikeAmadeus/front-end-reference/tree/main/HTML)
-- [CSS](https://github.com/RockLikeAmadeus/front-end-reference/tree/main/CSS)
-- [(Front-End) JavaScript]("https://github.com/RockLikeAmadeus/front-end-reference/tree/main/Frontend JavaScript")
-- [React](https://github.com/RockLikeAmadeus/front-end-reference/tree/main/React)
-- [React](React/)
+- [HTML](HTML/)
+- [CSS](CSS/)
+- [(Front-End) JavaScript](Frontend JavaScript/)
+- [React](React)
 
 # The Process of Building User Interfaces
 
