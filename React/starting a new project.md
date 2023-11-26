@@ -121,3 +121,25 @@ module.exports = {
   },
 };
 ```
+
+15. Add the `index.html` file
+
+```
+mkdir dist
+touch dist/index.html
+```
+
+In `index.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Application</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="main.js"></script>
+  </body>
+</html>
+```
