@@ -77,8 +77,20 @@ It's probably easier to populate this file after you've created some initial com
 
 See the example [here](appointments-example-app/src/sampleData.js).
 
-13. Add an application entry point: react apps are heirarchies of components, and the entry point should render the root component (note, we typically don't want to test-drive root components). Keep the entry point brief, and only use it to instantiate dependencies and to call `render()`
+13. Add an application entry point.
 
 ```
+$ touch src/index.js
+```
 
+React apps are heirarchies of components, and the entry point should render the root component (note, we typically don't want to test-drive root components). Keep the entry point brief, and only use it to instantiate dependencies and to call `render()`:
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client/";
+import { MyRootComponent } from "./MyRootComponent";
+import { mySampleData } from "./sampleData";
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <MyRootComponent data={mySampleData} />
+);
 ```
