@@ -57,12 +57,13 @@ We need Babel for a few things. It gets installed with Jest, so we really just n
 
 Note: this enables the React `act()` function, which pauses until asynchronous rendering has completed. It's useful, but not requierd for React testing. See https://reacttdd.com/understanding-act.
 
-11. If you'd like, add the `watchAll` flag to the `test` command to automatically re-run tests when changes are detected:
+11. Add a `build` script using webpack. Also, if you'd like, add the `watchAll` flag to the `test` command to automatically re-run tests when changes are detected:
 
 ```json
   ...
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "build": "webpack"
   },
   ...
 ```
@@ -93,4 +94,30 @@ import { mySampleData } from "./sampleData";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <MyRootComponent data={mySampleData} />
 );
+```
+
+14. Install webpack, and configure webpack in development mode (see webpack docs for setting up for production builds).
+
+```
+$ npm install --save-dev webpack webpack-cli babel-loader
+touch webpack.config.js
+```
+
+in webpack.config.js:
+
+```js
+const path = require("path");
+const webpack = require("webpack");
+module.exports = {
+  mode: "development",
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+      },
+    ],
+  },
+};
 ```
