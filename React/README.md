@@ -3,6 +3,10 @@
 - [React Example](appointments-example-app)
 - [Testing](testing)
 
+<br>
+
+---
+
 These notes and examples are compiled based on the following sources:
 
 - react.dev/learn
