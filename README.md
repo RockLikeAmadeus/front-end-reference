@@ -1,8 +1,8 @@
 # Contents
 
-- [HTML](HTML/)
-- [CSS](CSS/)
-- [(Front-End) JavaScript](Frontend JavaScript/)
+- [HTML](HTML)
+- [CSS](CSS)
+- [JavaScript](Frontend JavaScript)
 - [React](React)
 
 # The Process of Building User Interfaces
