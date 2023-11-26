@@ -100,7 +100,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 ```
 $ npm install --save-dev webpack webpack-cli babel-loader
-touch webpack.config.js
+$ touch webpack.config.js
 ```
 
 in webpack.config.js:
