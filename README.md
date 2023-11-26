@@ -5,9 +5,7 @@
 - [JavaScript](Frontend%20JavaScript)
 - [React](React)
 
----
-
-<br>
+## <br>
 
 # The Process of Building User Interfaces
 
