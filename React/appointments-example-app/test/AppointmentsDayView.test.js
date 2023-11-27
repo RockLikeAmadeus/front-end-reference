@@ -7,7 +7,7 @@ import { Appointment, AppointmentsDayView } from "../src/AppointmentsDayView";
 describe("Appointment", () => {
   let container;
   beforeEach(() => {
-    container = container = document.createElement("div");
+    container = document.createElement("div");
   });
 
   const render = (component) => {

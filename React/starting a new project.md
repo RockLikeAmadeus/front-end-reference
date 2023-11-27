@@ -90,6 +90,7 @@ See the example [here](appointments-example-app/src/sampleData.js).
 ### 7. Add an application entry point.
 
 ```
+$  mkdir src
 $ touch src/index.js
 ```
 

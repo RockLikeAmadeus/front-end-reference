@@ -17,7 +17,7 @@ Run your tests with `$ npm test`
 - The `it()` function is the preferred test method; there are equivalents with different names, but `it` reads best.
   - The first argument to `it()` should be a string which is a present-tense phrase that describes the behavior we expect, as this reads very nicely in the Jest test results (assuming the name of the suite is the name of the unit, as in the above example).
 - The `toContain()` function is an example of a _matcher_, and you can and should write your own matchers that are specific to your project.
-- In order for `document` to be defined as we expect, we need to use the `jsdom` **test environment** (a piece of code that performs setup and teardown before and after your test runs, respectively), which gives us a headless DOM we can access in the Node runtime for stuff like this. We install and setup `jsdom` in the project setup steps (9 and 10, to be exact).
+- In order for `document` to be defined as we expect, we need to use the `jsdom` **test environment** (a piece of code that performs setup and teardown before and after your test runs, respectively), which gives us a headless DOM we can access in the Node runtime for stuff like this. We install and setup `jsdom` in the project setup steps (2 and 4, to be exact).
 
 # Defining what usage of your component will look like (get to red)
 
